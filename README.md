@@ -15,6 +15,7 @@ Primarily there are 3 types of users involve with this system as listed below:
 • Manages the library member and librarian accounts.
 # Functionality of The System
 There are 3 users for this system that includes:
+
 • SYSTEM ADMINISTRATOR
 1. At least 1 Super Admin account is needed
 2. Login
@@ -31,6 +32,7 @@ iii. Search for a librarian.
 iv. Edit librarian information.
 v. Remove librarian.
 5. Logout
+   
 • LIBRARIAN
 1. Login.
 2. Book catalogue management:
@@ -45,7 +47,8 @@ ii. The system then verifies if the user has any overdue books. A user can
 only borrow up to 5 books and must have no overdue books to be eligible 
 for a new loan.
 4. Logout
-LIBRARY MEMBER
+
+• LIBRARY MEMBER
 1. Login.
 2. View current loaned books:
 • Includes book information, due date and overdue fees.
