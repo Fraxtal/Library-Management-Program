@@ -24,6 +24,7 @@ There are 3 users for this system that includes:
 1. At least 1 Super Admin account is needed
 2. Login
 3. Member Information Management:
+
    i. Add new member information.
    
    ii. View all member information.
