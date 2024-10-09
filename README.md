@@ -1,10 +1,13 @@
 # Library-Management-Program
 Title: Library Management System
+
 System Specification
+
 You are required to develop a library management system for the Brickfields Kuala 
 Lumpur Community Library. The library management system should be able to manage the 
 library's book catalogue, book loan records, library member and librarian information. Table 1 
 shows the overdue book return fee (in RM) based on the number of days overdue.
+
 ![image](https://github.com/user-attachments/assets/014999f4-679b-47aa-808e-5851e2bafc05)
 
 Primarily there are 3 types of users involve with this system as listed below:
