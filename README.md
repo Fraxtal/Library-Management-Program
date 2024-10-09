@@ -22,9 +22,13 @@ There are 3 users for this system that includes:
 2. Login
 3. Member Information Management:
    i. Add new member information.
+   
    ii. View all member information.
+   
    iii. Search member information.
+   
    iv. Edit member information.
+   
    v. Remove member.
 5. Librarian Information Management
    i. Add new librarian.
@@ -37,13 +41,21 @@ There are 3 users for this system that includes:
 • LIBRARIAN
 1. Login.
 2. Book catalogue management:
+
    i. Add new book into the catalogue.
+   
    ii. View all existing books in catalogue.
+   
    iii. Search book from the catalogue.
+   
    iv. Edit book information.
+   
    v. Remove book from the catalogue.
+   
 4. Perform book loan process:
+
    i. The librarian will enter the user and book id into the system.
+
    ii. The system then verifies if the user has any overdue books. A user can only borrow up to 5 books and must have no overdue books to be eligible for a new loan.
 6. Logout
 
@@ -59,11 +71,18 @@ in text files. The program submitted should be free of syntax and runtime errors
 validation should be done for each entry from the users to avoid logical errors.
 
 # REQUIREMENTS
+
 i. You are required to carry out extra research for your system and document for any logical assumptions you made after the research.
-ii. Your program should use symbolic constants where appropriate. Validations need to be included to ensure the accuracy of the system. State any assumptions that you make under each function. 
+
+ii. Your program should use symbolic constants where appropriate. Validations need to be included to ensure the accuracy of the system. State any assumptions that you make under each function.
+
 iii. You are required to store all data in text files. There is no limit on the number of text files that can be used but think of efficiency as well since too many text files also can affect the system performance.
+
 iv. You are expected to use any type of data storing and functions in your program. Your program must embrace modular programming technique and should be menu driven.
-v. You may include any extra features which you may feel relevant and that add value to the system. 
+
+v. You may include any extra features which you may feel relevant and that add value to the system.
+
 vi. There should be no need for graphics in your program, as what is being assessed, is your programming skill not the interface design. The marking scheme for the assignment has been provided so that you clearly know how the assessment for this assignment would be done.
+
 vii. You should include the good programming practice such as comments, variable naming conventions and indentation.
 
