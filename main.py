@@ -24,7 +24,6 @@ def main():
 			elif r == "quit":
 				quit()
 			else:
-				print("Invalid Input!")
 				raise Exception("Invalid role, please try again! ")
 			break
 		except Exception as e:
