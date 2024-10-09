@@ -6,6 +6,7 @@ Lumpur Community Library. The library management system should be able to manage
 library's book catalogue, book loan records, library member and librarian information. Table 1 
 shows the overdue book return fee (in RM) based on the number of days overdue.
 ![image](https://github.com/user-attachments/assets/014999f4-679b-47aa-808e-5851e2bafc05)
+
 Primarily there are 3 types of users involve with this system as listed below:
 1. Library Member (Non-Staff)
 • A library member who can borrow books.
