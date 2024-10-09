@@ -1,6 +1,6 @@
 # Library-Management-Program
-# Title: Library Management System
-# System Specification
+Title: Library Management System
+System Specification
 You are required to develop a library management system for the Brickfields Kuala 
 Lumpur Community Library. The library management system should be able to manage the 
 library's book catalogue, book loan records, library member and librarian information. Table 1 
