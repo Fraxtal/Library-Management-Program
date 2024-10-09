@@ -34,11 +34,17 @@ There are 3 users for this system that includes:
    
    v. Remove member.
 5. Librarian Information Management
+
    i. Add new librarian.
+   
    ii. View all librarians.
+   
    iii. Search for a librarian.
+   
    iv. Edit librarian information.
+   
    v. Remove librarian.
+   
 7. Logout
    
 • LIBRARIAN
@@ -60,6 +66,7 @@ There are 3 users for this system that includes:
    i. The librarian will enter the user and book id into the system.
 
    ii. The system then verifies if the user has any overdue books. A user can only borrow up to 5 books and must have no overdue books to be eligible for a new loan.
+   
 6. Logout
 
 • LIBRARY MEMBER
@@ -69,6 +76,7 @@ There are 3 users for this system that includes:
 3. Update profile information.
 4. Search book catalogues, including the availability status of the books.
 5. Logout.
+
 The application must be developed using python programming language. Data must be stored 
 in text files. The program submitted should be free of syntax and runtime errors. Besides that, 
 validation should be done for each entry from the users to avoid logical errors.
