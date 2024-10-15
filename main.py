@@ -1,14 +1,9 @@
 from imports import *
 
 def main():
-	# Scanning to see if the directory "database" is present in order to store data and if not it will create the directory
-	dir = "database"
-	exist = os.path.exists(dir)
-	if not exist:
-		os.mkdir(dir)
-		print(f"The main directory {dir} has been created!")
-
 	while True:
+		#Asking User about what role would they like to sign in as (If they would like to register, we would refer them to choose Member, if they would like to quit the program, they can just write "quit" to quit)
+		# Utilization of try..except is also involved in this part for efficient error handling
 		try:
 			r = input("What are you logging in as? (Member, Admin or Librarian)\n**PS: Member if you want to register instead.// Type 'quit' to quit the program\n").lower()
 			if r in ["admin", "librarian"]:
@@ -30,6 +25,10 @@ def main():
 			print(e)
 
 	while True:
+		# the variable r defines the role of the user and matches it to the case provided.
+		# After that, the user is then procided to their own respective menus.
+		# The menus for the user utilizes the method of match case as well to have a cleaner view of the code.
+		# Utilization of try..except is also involved in these match cases for efficient error handling
 		try:
 			match r:
 				case "admin":
@@ -54,6 +53,8 @@ def main():
 						case 6:
 							print("You have been logged out!")
 							break
+						case default:
+							raise Exception("Invalid Input, Please Try Again")
 
 				case "librarian":
 					print(f"What would you like to do?")
@@ -74,6 +75,8 @@ def main():
 						case 7:
 							print("You have been logged out!")
 							break
+						case default:
+							raise Exception("Invalid Input, Please Try Again")
 				
 				case "member":
 					print(f"What would you like to do?")
@@ -88,10 +91,21 @@ def main():
 						case 4:
 							print("You have been logged out!")
 							break
+						case default:
+							raise Exception("Invalid Input, Please Try Again")
 
 		except Exception as e:
 			print(e)
 
 
+#Runs this when the main file is being initialised
 if __name__ == '__main__':
+	# Scanning to see if the directory "database" is present in order to store data and if not it will create the directory
+	dir = "database"
+	exist = os.path.exists(dir)
+	if not exist:
+		os.mkdir(dir)
+		print(f"The main directory {dir} has been created!")
+
+	#Runs the main function to start the code
 	main()
