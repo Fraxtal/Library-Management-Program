@@ -81,7 +81,7 @@ def main():
 				case "member":
 					print(f"What would you like to do?")
 					print(f"1) View Current Loaned Books\n2) Update Personal Information\n3) Search Book Catalogue\n4) Logout")
-					match int(input("Choose one (1 - 4)")):
+					match int(input("Choose one (1 - 4)\n")):
 						case 1:
 							view_loaned_books(username)
 						case 2:

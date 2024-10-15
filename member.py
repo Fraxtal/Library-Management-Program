@@ -46,7 +46,9 @@ def editprofile(usrID):
     email = []
     
     with open("database/members.txt", "r+") as users:
-        for line in users:
+        users.seek(0)
+        lines = users.readlines()
+        for line in lines:
             users_id, users_pwd, users_name, users_email = line.split(',')
             users_pwd = users_pwd.strip()
             users_name = users_name.strip()
@@ -56,7 +58,11 @@ def editprofile(usrID):
             name.append(users_name)
             email.append(users_email)
             
-        x = id.index(usrID)
+        try:
+            x = id.index(usrID)
+        except ValueError:
+            raise Exception("User ID not found.")
+        
         print(f"{name[x]} with user id of {id[x]}")
         user_input = (input("What would you like to change?\n(Select options Name, Username, Password) ")).lower
         if user_input == "name":
@@ -66,7 +72,7 @@ def editprofile(usrID):
         elif user_input == "password":
             pwd[x] = input("What would you like to change the password to? ")
         elif user_input == "email":
-            email[x] == input("What would you like to change the email to? ")
+            email[x] = input("What would you like to change the email to? ")
         else:
             raise Exception("Invalid Input, please try again")
 		

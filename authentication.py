@@ -70,7 +70,7 @@ def login(src):
             if inputted_pwd == pwds[x]:
                 print("Login Successful!")
                 print(f"Welcome {names[x]}!")
-                return()
+                return(inputted_user)
             else:
                 raise Exception("Incorrect Password, please try again. ")
         else:
