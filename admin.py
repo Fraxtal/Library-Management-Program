@@ -1,7 +1,7 @@
 from authentication import is_valid_email
 
 # Adds a user into the account book
-def addusr(src):
+def addusr(src : str):
     with open(src, "r+") as user:
         username = input("Username: ")
         name = input("Name: ")
@@ -29,7 +29,7 @@ def addusr(src):
             print(f"{name} with username {username} has been successfully added into the database. ")
 
 # List users in a specific account book
-def listusr(src, role = str):
+def listusr(src : str, role : str):
     print(f"---------------\n List of {role.capitalize()}s\n---------------")
     
     with open(src, "r") as accs:
@@ -38,7 +38,7 @@ def listusr(src, role = str):
             print(f"{username}, {name}, {email}")
 
 # Edits a user's account information from a specific account book
-def editusr(src):
+def editusr(src : str):
     id = []
     pwd = []
     name = []
@@ -73,7 +73,7 @@ def editusr(src):
             print("Invalid Username")
 
 # Searches for a user in a specific account book
-def searchusr(src):
+def searchusr(src : str):
     x = input("Search for: ")
     with open(src, "r") as users:
         lines = users.readlines()
@@ -86,7 +86,7 @@ def searchusr(src):
             raise Exception("User is not found")
 
 # Deletes a user from a specific account book
-def delusr(src):
+def delusr(src : str):
     id = []
     pwd = []
     name = []
