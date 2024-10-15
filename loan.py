@@ -1,7 +1,7 @@
 from datetime import date, datetime
 
 #Checks the eligibility of the member of whether he is able to borrow an extra book or not
-def eligibility(username : str) -> (bool, str):
+def eligibility(username : str):
 	with open("database/members.txt", "r") as members:
 		if not username in members:
 			return(False, "Invalid Username or Username not Found")
@@ -11,7 +11,7 @@ def eligibility(username : str) -> (bool, str):
 			return(True, "")
 
 #Checks the existance of the book and its availability
-def checkbook(book : str) -> (bool, str):
+def checkbook(book : str):
 	with open("database/book.txt", "r") as db_books, open("database/bookrental_records.txt", "r") as db_r:
 		books = db_books.read().splitlines()
 		rentals = db_r.read().splitlines()
@@ -28,7 +28,7 @@ def check_due_date(d : str) -> bool:
 	return (date.today() - d).days <= 7
 	
 #Checks if the member has borrowed more than 5 books from the library
-def check_member_loans(username: str) -> bool:
+def check_member_loans(username : str) -> bool:
 	with open("database/bookrental_records.txt", "r") as bkr:
 		loans = [line.strip().split(',') for line in bkr]
 			
@@ -40,7 +40,7 @@ def check_member_loans(username: str) -> bool:
 			return False
 
 #The main function for loaning a book to a member
-def loan() -> void:
+def loan():
 	status = True
 	member_username = input("Username of member: ")
 	status, message = eligibility(member_username)
