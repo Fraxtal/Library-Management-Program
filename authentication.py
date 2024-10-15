@@ -1,7 +1,7 @@
 import re
 
 # Determines which account book the program will find the account of the user from
-def role(r):
+def role(r : str) -> str:
     if r == "admin":
         src = "database/admins.txt"
         return(src)
@@ -13,7 +13,7 @@ def role(r):
         return(src)
 
 # Ensures the validation of an email
-def is_valid_email(email):
+def is_valid_email(email : str):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(pattern, email) is not None
 
@@ -48,7 +48,7 @@ def register():
             return()
 
 # Login function
-def login(src):
+def login(src : str):
     users = []
     pwds = []
     names = []
