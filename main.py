@@ -106,6 +106,11 @@ if __name__ == '__main__':
 	if not exist:
 		os.mkdir(dir)
 		print(f"The main directory {dir} has been created!")
+	
+	#Print Startup Header for the Application
+	print("\t -----------------------------------------------\n"
+		"\t    Brickfields Kuala Lumpur Community Library \n"
+		"\t ------------------------------------------------")
 
 	#Runs the main function to start the code
 	main()
