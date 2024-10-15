@@ -1,10 +1,12 @@
 from datetime import date, datetime
 
+#Checks the amount of days the member has already borrowed the book for
 def overdue_checker(d):
 	d = datetime.strptime(d, '%m-%d-%Y').date()
 	diff = date.today() - d
 	return diff.days
 
+# Views the amount of loaned books that the member has
 def view_loaned_books(username):
 	users = []
 	book_ids = []
@@ -35,7 +37,8 @@ def view_loaned_books(username):
 							price =+ 1
 				print(f"{username} has borrowed {title.strip()} with ID of {id.strip()} by {author.strip()} and is overdued for {x} days.\n"
 		   			f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
-				
+
+# Function to allow the member to edit his personal
 def editprofile(usrID):
     id = []
     pwd = []
@@ -67,6 +70,7 @@ def editprofile(usrID):
         else:
             raise Exception("Invalid Input, please try again")
 		
+#Allows member to search and check for the availablity of a specific book
 def search_and_check_availability():
     search_query = input("Enter Book Title or BookID to search: ")
     

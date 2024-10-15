@@ -1,5 +1,6 @@
 from authentication import is_valid_email
 
+# Adds a user into the account book
 def addusr(src):
     with open(src, "r+") as user:
         username = input("Username: ")
@@ -8,7 +9,7 @@ def addusr(src):
         pwd = input("Create your Password: ")
         cfm_pwd = input("Confirm your Password: ")
         
-        user.seek(0)  # Go to the beginning of the file
+        user.seek(0)
         users = user.read()
         
         if pwd != cfm_pwd:
@@ -27,6 +28,7 @@ def addusr(src):
             user.write(f"{username},{pwd},{name},{email}\n")
             print(f"{name} with username {username} has been successfully added into the database. ")
 
+# List users in a specific account book
 def listusr(src, role = str):
     print(f"---------------\n List of {role.capitalize()}s\n---------------")
     
@@ -35,6 +37,7 @@ def listusr(src, role = str):
             username, pwd, name, email = line.split(',').strip()
             print(f"{username}, {name}, {email}")
 
+# Edits a user's account information from a specific account book
 def editusr(src):
     id = []
     pwd = []
@@ -69,6 +72,7 @@ def editusr(src):
         else:
             print("Invalid Username")
 
+# Searches for a user in a specific account book
 def searchusr(src):
     x = input("Search for: ")
     with open(src, "r") as users:
@@ -81,6 +85,7 @@ def searchusr(src):
         if not found:
             raise Exception("User is not found")
 
+# Deletes a user from a specific account book
 def delusr(src):
     id = []
     pwd = []

@@ -1,3 +1,4 @@
+# List the books down
 def listbooks():
     print("---------------\nList of Books\n---------------")
     b = open("database/books.txt", "r+")
@@ -7,7 +8,7 @@ def listbooks():
         author = author.strip()
         print(f"Book titled {title} with id {id} by {author}")
             
-            
+# Add a book into the library catalogue
 def addbook():
     b = open("database/books.txt", "r+")
     book_id = input("BookID: ")
@@ -24,7 +25,8 @@ def addbook():
         b.write(f"{book_id}, {title}, {author}\n")
         print(f"Book titled {title} with id {book_id} by {author} has been successfully added into the catalogue!")
     b.close
-            
+
+# Deletes a book from the library catalogue
 def delbook():
     book = []
     title = []
@@ -52,6 +54,7 @@ def delbook():
     else:
         raise Exception("Invalid BookID or BookID does not exist, please try again")
 
+# Searches for a book from the library catalogue
 def searchbook():
     b = open("database/books.txt", "r+")
     x = input("Search for: ")
@@ -62,16 +65,14 @@ def searchbook():
     else:
         raise Exception("Nothing is Found")
 
+# Edits information of a book in the library catalogue
 def editbook():
     book_ids = []
     titles = []
     authors = []
     
     with open("database/books.txt", "r+") as b:
-        # Read the content of the file
         lines = b.readlines()
-        
-        # Process each line in the file
         for line in lines:
             b_id, b_title, b_auth = line.split(',')
             b_title = b_title.strip()
@@ -79,14 +80,10 @@ def editbook():
             book_ids.append(b_id)
             titles.append(b_title)
             authors.append(b_auth)
-        
-        # Get the book ID that the user wants to edit
         book_id = input("BookID of the book that you want to edit: ")
         
         if book_id in book_ids:
             index = book_ids.index(book_id)
-            
-            # Ask what data the user wants to change
             change = input(f"What data do you want to change for BookID {book_id}? (Title or Author): ").strip().lower()
             
             if change == "title":
@@ -98,12 +95,9 @@ def editbook():
             else:
                 print("Invalid choice. Please select either 'Title' or 'Author'.")
                 return
-            
-            # Rewind the file pointer and truncate the file to clear its content
             b.seek(0)
             b.truncate()
             
-            # Write the updated data back to the file
             for i in range(len(book_ids)):
                 b.write(f"{book_ids[i]}, {titles[i]}, {authors[i]}\n")
             

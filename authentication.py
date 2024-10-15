@@ -1,5 +1,6 @@
 import re
 
+# Determines which account book the program will find the account of the user from
 def role(r):
     if r == "admin":
         src = "database/admins.txt"
@@ -11,10 +12,12 @@ def role(r):
         src = "database/members.txt"
         return(src)
 
+# Ensures the validation of an email
 def is_valid_email(email):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(pattern, email) is not None
 
+# Register function for new members
 def register():
     with open("database/members.txt", "r+") as user:
         username = input("Create your Username: ")
@@ -44,6 +47,7 @@ def register():
             print(f"Welcome {username}!")
             return()
 
+# Login function
 def login(src):
     users = []
     pwds = []
