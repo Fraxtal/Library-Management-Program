@@ -9,6 +9,7 @@ def main():
 			if r in ["admin", "librarian"]:
 				src = role(r)
 				username = login(src)
+				break
 			elif r == "member":
 				temp = input("Would you like to register or login? ").lower()
 				if temp == "register":
@@ -16,8 +17,10 @@ def main():
 				elif temp == "login":
 					src = role(r)
 					username = login(src)
+					break
 			elif r == "quit":
-				quit()
+				print("Quitting the program.....")
+				return()
 			else:
 				raise Exception("Invalid role, please try again! ")
 			break
