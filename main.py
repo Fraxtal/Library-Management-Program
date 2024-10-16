@@ -40,7 +40,8 @@ def main():
 	                
 	        except Exception as e:
 	            print(f"Error: {e}")
-
+			
+# After successful login, proceed to the user's respective menu
 	while True:
 		# the variable r defines the role of the user and matches it to the case provided.
 		# After that, the user is then procided to their own respective menus.
