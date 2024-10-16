@@ -59,6 +59,7 @@ def login(src : str):
     with open(src, "r") as users_db:
         for line in users_db:
             user, pwd, name, email = line.split(',')
+            user = user.strip()
             pwd = pwd.strip()
             name = name.strip()
             users.append(user)
