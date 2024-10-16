@@ -113,6 +113,9 @@ def delusr(src : str):
             with open(src, "w") as u:
                 for i in range(len(id)):
                     u.write(f"{id[i]},{pwd[i]},{name[i]},{email[i]}\n")
+        else:
+            print("Action Declined")
+            return()
         
         print("The user that you have requested has been successfully removed from the database.")
     else:
