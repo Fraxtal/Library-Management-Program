@@ -1,45 +1,43 @@
 from imports import *
 
 def main():
-	while True:
-		#Asking User about what role would they like to sign in as (If they would like to register, we would refer them to choose Member, if they would like to quit the program, they can just write "quit" to quit)
-		# Utilization of try..except is also involved in this part for efficient error handling
-		try:
-            	# Ask the user for their role
-	            r = input("What are you logging in as? (Member, Admin, or Librarian)\n**PS: Member if you want to register instead.// Type 'quit' to quit the program\n").lower()
-	            
-	            if r in ["admin", "librarian"]:
-	                src = role(r)
-	                username = login(src)  # Call login function
-	                if not username:
-	                    # If login fails, continue asking for login
-	                    print("Login failed. Try again.")
-	                    continue  # Go back to login prompt
-	                else:
-	                    break  # Break out of the loop after successful login
-	            
-	            elif r == "member":
-	                temp = input("Would you like to register or login?\n").lower()
-	                if temp == "register":
-	                    register()
-	                elif temp == "login":
-	                    src = role(r)
-	                    username = login(src)  # Call login function
-	                    if not username:
-	                        print("Login failed. Try again.")
-	                        continue  # Go back to login prompt
-	                    else:
-	                        break  # Break out of loop after successful login
-	                else:
-	                    print("Invalid option for member, please choose 'register' or 'login'.")
-	            elif r == "quit":
-	                print("Quitting the program.")
-	                return() # Graceful exit
+	try:
+	    # Ask the user for their role
+	    r = input("What are you logging in as? (Member, Admin, or Librarian)\n**PS: Member if you want to register instead.// Type 'quit' to quit the program\n").lower()
+	    
+	    if r in ["admin", "librarian"]:
+	        src = role(r)
+	        username = login(src)  # Call login function
+	        if not username:
+	            # If login fails, continue asking for login
+	            print("Login failed. Try again.")
+	            continue  # Go back to login prompt
+	        else:
+	            break  # Break out of the loop after successful login
+	    
+	    elif r == "member":
+	        temp = input("Would you like to register or login?\n").lower()
+	        if temp == "register":
+	            register()
+	        elif temp == "login":
+	            src = role(r)
+	            username = login(src)  # Call login function
+	            if not username:
+	                print("Login failed. Try again.")
+	                continue  # Go back to login prompt
 	            else:
-	                print("Invalid role, please try again.")
-	                
-	        except Exception as e:
-	            print(f"Error: {e}")
+	                break  # Break out of loop after successful login
+	        else:
+	            print("Invalid option for member, please choose 'register' or 'login'.")
+	    elif r == "quit":
+	        print("Quitting the program.")
+	        return  # Graceful exit
+	    else:
+	        print("Invalid role, please try again.")
+	        
+	except Exception as e:
+	    print(f"Error: {e}")
+
 			
 # After successful login, proceed to the user's respective menu
 	while True:
