@@ -53,7 +53,7 @@ def main():
 						case 6:
 							print("You have been logged out!")
 							break
-						case default:
+						case _:
 							raise Exception("Invalid Input, Please Try Again")
 
 				case "librarian":
@@ -75,7 +75,7 @@ def main():
 						case 7:
 							print("You have been logged out!")
 							break
-						case default:
+						case _:
 							raise Exception("Invalid Input, Please Try Again")
 				
 				case "member":
@@ -91,7 +91,7 @@ def main():
 						case 4:
 							print("You have been logged out!")
 							break
-						case default:
+						case _:
 							raise Exception("Invalid Input, Please Try Again")
 
 		except Exception as e:
