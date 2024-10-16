@@ -104,7 +104,7 @@ def delusr(src : str):
     
     if id_input in id:
         cfm = (input(f"Are you sure that you want to delete {id_input} (Yes or No)?: ")).lower()
-        if cfm == "Yes":
+        if cfm == "yes":
             x = id.index(id_input)
             del id[x]
             del pwd[x]
@@ -112,7 +112,7 @@ def delusr(src : str):
             del email[x]
             with open(src, "w") as u:
                 for i in range(len(id)):
-                    u.write(f"{id[i]},{pwd[i]},{name[i]},{email[x]}\n")
+                    u.write(f"{id[i]},{pwd[i]},{name[i]},{email[i]}\n")
         
         print("The user that you have requested has been successfully removed from the database.")
     else:
