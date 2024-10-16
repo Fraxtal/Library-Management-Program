@@ -19,7 +19,7 @@ def main():
 	                    break  # Break out of the loop after successful login
 	            
 	            elif r == "member":
-	                temp = input("Would you like to register or login? ").lower()
+	                temp = input("Would you like to register or login?\n").lower()
 	                if temp == "register":
 	                    register()
 	                elif temp == "login":
@@ -52,7 +52,7 @@ def main():
 				case "admin":
 					print(f"What would you like to do?")
 					print(f"1) Add User\n2) List Users\n3) Edit User Information\n4) Search User\n5) Delete User\n6) Logout")
-					match int(input("Choose one (1 - 6)")):
+					match int(input("Choose one (1 - 6)\n")):
 						case 1:
 							target = input("Which user role would you like to add? (Admin, Member, Librarian)\n").lower()
 							addusr(role(target))
@@ -77,7 +77,7 @@ def main():
 				case "librarian":
 					print(f"What would you like to do?")
 					print(f"1) Add Book\n2) List Books\n3) Edit Book Information\n4) Search Book\n5) Delete Book\n6) Loan Book\n7) Logout")
-					match int(input("Choose one (1 - 7)")):
+					match int(input("Choose one (1 - 7)\n")):
 						case 1:
 							addbook()
 						case 2:
