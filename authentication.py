@@ -48,31 +48,38 @@ def register():
             return()
 
 # Login function
-def login(src : str):
+def login(src: str):
     users = []
     pwds = []
     names = []
 
-    inputted_user = input("Enter your Username: ")
-    inputted_pwd = input("Enter your Password: ")
+    inputted_user = input("Enter your Username: ").strip()
+    inputted_pwd = input("Enter your Password: ").strip()
 
+    # Open and read the user data file
     with open(src, "r") as users_db:
         for line in users_db:
             user, pwd, name, email = line.split(',')
             user = user.strip()
             pwd = pwd.strip()
             name = name.strip()
+
             users.append(user)
             pwds.append(pwd)
             names.append(name)
-            
-        if inputted_user in users:
-            x = users.index(inputted_user)
-            if inputted_pwd == pwds[x]:
-                print("Login Successful!")
-                print(f"Welcome {names[x]}!")
-                return(inputted_user)
-            else:
-                raise Exception("Incorrect Password, please try again. ")
+
+    # Check if the username exists
+    if inputted_user in users:
+        x = users.index(inputted_user)
+        
+        # Check if the password matches
+        if inputted_pwd == pwds[x]:
+            print("Login Successful!")
+            print(f"Welcome {names[x]}!")
+            return inputted_user
         else:
-            raise Exception("Username not found, please try again. ")
+            print("Incorrect Password, please try again.")
+            return None  # Indicate failed login
+    else:
+        print("Username not found, please try again.")
+        return None  # Indicate failed login
