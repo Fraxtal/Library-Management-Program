@@ -75,7 +75,7 @@ def editprofile(usrID : str):
             email[x] = input("What would you like to change the email to? ")
         else:
             raise Exception("Invalid Input, please try again")
-	print("Change has been done successfully")
+    print("Change has been done successfully")
 		
 #Allows member to search and check for the availablity of a specific book
 def search_and_check_availability():

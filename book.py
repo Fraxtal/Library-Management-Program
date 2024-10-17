@@ -56,14 +56,25 @@ def delbook():
 
 # Searches for a book from the library catalogue
 def searchbook():
-    b = open("database/books.txt", "r+")
-    x = input("Search for: ")
-    if x in b:
-        for line in b:
-            if x in line:
-                print(line)
-    else:
-        raise Exception("Nothing is Found")
+    try:
+        with open("database/books.txt", "r") as b:
+            x = input("Search for: ")
+            found = False
+            
+            # Loop through each line to search for the book
+            for line in b:
+                if x in line:
+                    print(line)
+                    found = True
+            
+            if not found:
+                raise Exception("Nothing is Found")
+    
+    except FileNotFoundError:
+        print("The file was not found.")
+    except Exception as e:
+        print(e)
+
 
 # Edits information of a book in the library catalogue
 def editbook():
