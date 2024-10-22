@@ -31,10 +31,10 @@ def register():
         
         users = user.read()
         for lines in users:
-            u, n, e, p = lines.split(",").strip()
-            u_l.append(u)
-            n_l.append(n)
-            e_l.append(e)
+            u, n, e, p = lines.split(",")
+            u_l.append(u.strip())
+            n_l.append(n.strip())
+            e_l.append(e.strip())
         
         if pwd != cfm_pwd:
             print("Passwords don't match, please try again")
