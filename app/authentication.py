@@ -52,7 +52,6 @@ def register():
             user.write(f"{username},{pwd},{name},{email}\n")
             print("Registration Successful!!")
             print(f"Welcome {username}!")
-            return()
 
 # Login function
 def login(src: str):
