@@ -16,7 +16,7 @@ def main():
 					print("Login failed. Try again.")
 					continue  # Go back to login prompt
 				else:
-					break  # Break out of the loop after successful login
+					break()  # Break out of the loop after successful login
 			
 			elif r == "member":
 				temp = input("Would you like to register or login?\n").lower()
@@ -34,7 +34,7 @@ def main():
 					print("Invalid option for member, please choose 'register' or 'login'.")
 			elif r == "quit":
 				print("Quitting the program.")
-				return  # Graceful exit
+				return()  # Exit the function
 			else:
 				print("Invalid role, please try again.")
 				
