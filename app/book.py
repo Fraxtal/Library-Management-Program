@@ -105,8 +105,7 @@ def editbook():
             else:
                 print("Invalid choice. Please select either 'Title' or 'Author'.")
                 return
-            b.seek(0)
-            b.truncate()
+            b.truncate(0)
             
             for i in range(len(book_ids)):
                 b.write(f"{book_ids[i]}, {titles[i]}, {authors[i]}\n")
