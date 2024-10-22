@@ -17,16 +17,27 @@ def eligibility(username: str):
 
 # Checks the existence of the book and its availability
 def checkbook(book: str):
-    with open("database/books.txt", "r") as db_books, open("database/bookrental_records.txt", "r") as db_r:
-        books = db_books.read().splitlines()
-        rentals = db_r.read().splitlines()
-        if book not in books:
+    book_b = []
+    book_bkr = []
+    with open("database/books.txt", "r") as b, open("database/bookrental_records.txt", "r") as bkr:
+        b_lines = b.readlines()
+        for line in b_lines:
+            bk, t, a = line.split(",")
+            book_b.append(bk.strip())
+
+        bkr_lines = bkr.readlines()
+        for line in bkr_lines:
+            user, bk, d = line.split(",")
+            book_bkr.append(bk.strip())
+
+
+        if book not in book_b:
             return (False, "Invalid BookId or Incorrect BookID")
-        elif any(book in rental for rental in rentals):
+        elif book in book_bkr:
             return (False, f"Book with id {book} is unavailable to be borrowed at the moment")
         else:
             return (True, "")
-
+        
 # Checks the due date of the book being lent to the member
 def check_due_date(d: str) -> bool:
     d = datetime.strptime(d, '%m/%d/%Y').date()  # Ensure the format matches the stored format
@@ -35,7 +46,8 @@ def check_due_date(d: str) -> bool:
 # Checks if the member has borrowed more than 5 books from the library
 def check_member_loans(username: str) -> bool:
     with open("database/bookrental_records.txt", "r") as bkr:
-        loans = [line.strip().split(',') for line in bkr]
+        lines = bkr.readlines()
+        loans = [line.strip().split(',') for line in lines]
     
     loan_count = sum(1 for loan in loans if loan[0] == username)
     if loan_count > 5:
