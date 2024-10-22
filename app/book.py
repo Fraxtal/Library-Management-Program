@@ -10,21 +10,34 @@ def listbooks():
             
 # Add a book into the library catalogue
 def addbook():
-    b = open("database/books.txt", "r+")
-    book_id = input("BookID: ")
-    title = input("Title: ")
-    author = input("Author: ")
+    book = []
+    title = []
+    auth = []
+    
+    with open("database/books.txt", "r+") as b:
+        lines = b.readlines()
+        for line in lines:
+            if line.strip() != "":
+                b_id, b_title, b_auth = line.split(',')
+                book.append(b_id.strip())
+                title.append(b_title.strip())
+                auth.append(b_auth.strip())
 
-    if len(book_id) != 6:
-        raise Exception("Please Key in a valid BookID. ")
-    elif book_id in b:
-        raise Exception("BookID already exists, please try another one. ")
-    elif title in b:
-        raise Exception("Title already exists, please try again. ")
-    else:
-        b.write(f"{book_id}, {title}, {author}\n")
-        print(f"Book titled {title} with id {book_id} by {author} has been successfully added into the catalogue!")
-    b.close
+        book_id = input("BookID: ")
+        title = input("Title: ")
+        author = input("Author: ")
+
+        if len(book_id) != 6:
+            raise Exception("Please Key in a valid BookID. ")
+        elif book_id in book:
+            raise Exception("BookID already exists, please try another one. ")
+        elif title in b:
+            raise Exception("Title already exists, please try again. ")
+        else:
+            with open("database/books.txt", "w") as a:
+                a.write(f"{book_id}, {title}, {author}\n")
+                print(f"Book titled {title} with id {book_id} by {author} has been successfully added into the catalogue!")
+        
 
 # Deletes a book from the library catalogue
 def delbook():
@@ -32,47 +45,45 @@ def delbook():
     title = []
     auth = []
     
-    b = open("database/books.txt", "r+")
-    for line in b:
-        b_id, b_title, b_auth = line.split(',')
-        b_title = b_title.strip()
-        b_auth = b_auth.strip()
-        book.append(b_id)
-        title.append(b_title)
-        auth.append(b_auth)
-        
-    book_id = input("BookID: ")
-    if book_id in book:
-        x = book.index(book_id)
-        
-        del book[x], title[x], auth[x]
-        b.truncate(0)
-        for i in range(len(book)):
-            b.write(f"{book[i]}, {title[i]}, {auth[i]}\n")
-        print("The book title that you have requested has been successfully removed from the catalogue.")
-    else:
-        raise Exception("Invalid BookID or BookID does not exist, please try again")
+    with open("database/books.txt", "r+") as b:
+        lines = b.readlines()
+        for line in lines:
+            if line.strip() != "":
+                b_id, b_title, b_auth = line.split(',')
+                book.append(b_id.strip())
+                title.append(b_title.strip())
+                auth.append(b_auth.strip())
+            
+        book_id = input("BookID: ")
+        if book_id in book:
+            x = book.index(book_id)
+            
+            del book[x]
+            del title[x]
+            del auth[x]
+            b.seek(0)
+            b.truncate(0)
+            for i in range(len(book)):
+                if book[i] and title[i] and auth[x] is not None:
+                    b.write(f"{book[i]}, {title[i]}, {auth[i]}\n")
+            print("The book title that you have requested has been successfully removed from the catalogue.")
+        else:
+            raise Exception("Invalid BookID or BookID does not exist, please try again")
 
 # Searches for a book from the library catalogue
 def searchbook():
-    try:
-        with open("database/books.txt", "r") as b:
-            x = input("Search for: ")
-            found = False
+    with open("database/books.txt", "r") as b:
+        x = input("Search for: ")
+        found = False
+        
+        # Loop through each line to search for the book
+        for line in b:
+            if x in line:
+                print(line)
+                found = True
             
-            # Loop through each line to search for the book
-            for line in b:
-                if x in line:
-                    print(line)
-                    found = True
-            
-            if not found:
-                raise Exception("Nothing is Found")
-    
-    except FileNotFoundError:
-        print("The file was not found.")
-    except Exception as e:
-        print(e)
+        if not found:
+            raise Exception("Nothing is Found")
 
 
 # Edits information of a book in the library catalogue
@@ -84,12 +95,13 @@ def editbook():
     with open("database/books.txt", "r+") as b:
         lines = b.readlines()
         for line in lines:
-            b_id, b_title, b_auth = line.split(',')
-            b_title = b_title.strip()
-            b_auth = b_auth.strip()
-            book_ids.append(b_id)
-            titles.append(b_title)
-            authors.append(b_auth)
+            if line.strip() != "":
+                b_id, b_title, b_auth = line.split(',')
+                b_title = b_title.strip()
+                b_auth = b_auth.strip()
+                book_ids.append(b_id)
+                titles.append(b_title)
+                authors.append(b_auth)
         book_id = input("BookID of the book that you want to edit: ")
         
         if book_id in book_ids:

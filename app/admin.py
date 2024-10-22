@@ -33,8 +33,8 @@ def listusr(src : str, role : str):
     
     with open(src, "r") as accs:
         for line in accs:
-            username, pwd, name, email = line.split(',').strip()
-            print(f"{username}, {name}, {email}")
+            username, pwd, name, email = line.split(',')
+            print(f"{username}, {name}, {email.strip()}")
 
 # Edits a user's account information from a specific account book
 def editusr(src : str):
@@ -48,19 +48,17 @@ def editusr(src : str):
         raise Exception("You cannot edit this account!")
     
     with open(src, "r+") as users:
-        for line in users:
+        lines = users.readlines()
+        for line in lines:
             users_id, users_pwd, users_name, users_email = line.split(',')
-            users_pwd = users_pwd.strip()
-            users_name = users_name.strip()
-            users_email = users_email.strip()
-            id.append(users_id)
-            pwd.append(users_pwd)
-            name.append(users_name)
-            email.append(users_email)
+            id.append(users_id.strip())
+            pwd.append(users_pwd.strip())
+            name.append(users_name.strip())
+            email.append(users_email.strip())
         if usrID in id:
             x = id.index(usrID)
             print(f"{name[x]} with user id of {id[x]}")
-            user_input = (input("What would you like to change?\n(Select options Name, Username, Password) ")).lower
+            user_input = (input("What would you like to change?\n(Select options Name, Username, Password) ")).lower()
             if user_input == "name":
                 name[x] = input("What would you like to change the name to? ")
             elif user_input == "username":
@@ -71,6 +69,12 @@ def editusr(src : str):
                 email[x] == input("What would you like to change the email to? ")
             else:
                 raise Exception("Invalid Input, please try again")
+            
+            users.seek(0)
+            users.truncate(0)
+            for i in range(len(id)):
+                users.write(f"{id[i]},{pwd[i]},{name[i]},{email[i]}\n")
+
         else:
             raise Exception("Invalid Username")
     print("Change has been done successfully")
@@ -95,7 +99,7 @@ def delusr(src : str):
     name = []
     email = []
     id_input = input("Username: ")
-    if id_input == "root":
+    if src == "database/admin.txt" and id_input == "root":
         raise Exception("You cannot delete this account!")
     
     with open(src, "r") as u:
@@ -116,6 +120,8 @@ def delusr(src : str):
             del name[x]
             del email[x]
             with open(src, "w") as u:
+                u.seek(0)
+                u.truncate(0)
                 for i in range(len(id)):
                     u.write(f"{id[i]},{pwd[i]},{name[i]},{email[i]}\n")
         else:

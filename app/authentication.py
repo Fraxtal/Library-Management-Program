@@ -8,9 +8,11 @@ def role(r : str) -> str:
     elif r == "librarian":
         src = "database/librarians.txt"
         return(src)
-    else:
+    elif r == "member":
         src = "database/members.txt"
         return(src)
+    else:
+        raise Exception("Invalid Input for role selection")
 
 # Ensures the validation of an email
 def is_valid_email(email : str):
