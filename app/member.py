@@ -46,35 +46,32 @@ def editprofile(usrID : str):
     email = []
     
     with open("database/members.txt", "r+") as users:
-        users.seek(0)
-        lines = users.readlines()
-        for line in lines:
+        for line in users:
             users_id, users_pwd, users_name, users_email = line.split(',')
-            users_pwd = users_pwd.strip()
-            users_name = users_name.strip()
-            users_email = users_email.strip()
-            id.append(users_id)
-            pwd.append(users_pwd)
-            name.append(users_name)
-            email.append(users_email)
-            
-        try:
+            id.append(users_id.strip())
+            pwd.append(users_pwd.strip())
+            name.append(users_name.strip())
+            email.append(users_email.strip())
+        if usrID in id:
             x = id.index(usrID)
-        except ValueError:
-            raise Exception("User ID not found.")
-        
-        print(f"{name[x]} with user id of {id[x]}")
-        user_input = (input("What would you like to change?\n(Select options Name, Username, Password) ")).lower
-        if user_input == "name":
-            name[x] = input("What would you like to change the name to? ")
-        elif user_input == "username":
-            id[x] = input("What would you like to change the username to? ")
-        elif user_input == "password":
-            pwd[x] = input("What would you like to change the password to? ")
-        elif user_input == "email":
-            email[x] = input("What would you like to change the email to? ")
+            print(f"{name[x]} with user id of {id[x]}")
+            user_input = (input("What would you like to change?\n(Select options Name, Username, Password) ")).lower
+            if user_input == "name":
+                name[x] = input("What would you like to change the name to? ")
+            elif user_input == "username":
+                id[x] = input("What would you like to change the username to? ")
+            elif user_input == "password":
+                pwd[x] = input("What would you like to change the password to? ")
+            elif user_input == "email":
+                email[x] == input("What would you like to change the email to? ")
+            else:
+                raise Exception("Invalid Input, please try again")
+            users.truncate(0)
+            for i in range(len(id)):
+                    users.write(f"{id[i]},{pwd[i]},{name[i]},{email[i]}\n")
         else:
-            raise Exception("Invalid Input, please try again")
+            raise Exception("Invalid Username")
+
     print("Change has been done successfully")
 		
 #Allows member to search and check for the availablity of a specific book

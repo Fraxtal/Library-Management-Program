@@ -1,4 +1,4 @@
-from authentication import is_valid_email
+from .authentication import is_valid_email
 
 # Adds a user into the account book
 def addusr(src : str):
@@ -9,7 +9,6 @@ def addusr(src : str):
         pwd = input("Create your Password: ")
         cfm_pwd = input("Confirm your Password: ")
         
-        user.seek(0)
         users = user.read()
         
         if pwd != cfm_pwd:
@@ -44,6 +43,9 @@ def editusr(src : str):
     name = []
     email = []
     usrID = input("Username of the user information that you want to edit: ")
+
+    if usrID == "root":
+        raise Exception("You cannot edit this account!")
     
     with open(src, "r+") as users:
         for line in users:
@@ -68,9 +70,10 @@ def editusr(src : str):
             elif user_input == "email":
                 email[x] == input("What would you like to change the email to? ")
             else:
-                print("Invalid Input, please try again")
+                raise Exception("Invalid Input, please try again")
         else:
-            print("Invalid Username")
+            raise Exception("Invalid Username")
+    print("Change has been done successfully")
 
 # Searches for a user in a specific account book
 def searchusr(src : str):
@@ -91,6 +94,9 @@ def delusr(src : str):
     pwd = []
     name = []
     email = []
+    id_input = input("Username: ")
+    if id_input == "root":
+        raise Exception("You cannot delete this account!")
     
     with open(src, "r") as u:
         for line in u:
@@ -100,7 +106,6 @@ def delusr(src : str):
             name.append(u_name.strip())
             email.append(u_email.strip())
         
-    id_input = input("Username: ")
     
     if id_input in id:
         cfm = (input(f"Are you sure that you want to delete {id_input} (Yes or No)?: ")).lower()

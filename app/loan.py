@@ -17,7 +17,7 @@ def eligibility(username: str):
 
 # Checks the existence of the book and its availability
 def checkbook(book: str):
-    with open("database/book.txt", "r") as db_books, open("database/bookrental_records.txt", "r") as db_r:
+    with open("database/books.txt", "r") as db_books, open("database/bookrental_records.txt", "r") as db_r:
         books = db_books.read().splitlines()
         rentals = db_r.read().splitlines()
         if book not in books:

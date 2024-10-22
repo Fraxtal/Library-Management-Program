@@ -20,26 +20,33 @@ def is_valid_email(email : str):
 # Register function for new members
 def register():
     with open("database/members.txt", "r+") as user:
+        u_l = []
+        n_l = []
+        e_l = []
         username = input("Create your Username: ")
         name = input("Real Name: ")
         email = input("Email: ")
         pwd = input("Create your Password: ")
         cfm_pwd = input("Confirm your Password: ")
         
-        user.seek(0)
         users = user.read()
+        for lines in users:
+            u, n, e, p = lines.split(",").strip()
+            u_l.append(u)
+            n_l.append(n)
+            e_l.append(e)
         
         if pwd != cfm_pwd:
             print("Passwords don't match, please try again")
         elif len(pwd) <= 6:
             print("Password is too short, please try again")
-        elif username in users:
+        elif username in u_l:
             print("Username exists, please try again")
-        elif name in users:
+        elif name in n_l:
             print("Name already exists, please try again")
         elif not is_valid_email(email):
             print("Invalid Email, please try again")
-        elif email in users:
+        elif email in e_l:
             print("Email already exists, please try again")
         else:
             user.write(f"{username},{pwd},{name},{email}\n")
@@ -60,13 +67,9 @@ def login(src: str):
     with open(src, "r") as users_db:
         for line in users_db:
             user, pwd, name, email = line.split(',')
-            user = user.strip()
-            pwd = pwd.strip()
-            name = name.strip()
-
-            users.append(user)
-            pwds.append(pwd)
-            names.append(name)
+            users.append(user.strip())
+            pwds.append(pwd.strip())
+            names.append(name.strip())
 
     # Check if the username exists
     if inputted_user in users:

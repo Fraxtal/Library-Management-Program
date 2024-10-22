@@ -46,8 +46,7 @@ def delbook():
         x = book.index(book_id)
         
         del book[x], title[x], auth[x]
-        b.seek(0)
-        b.truncate()
+        b.truncate(0)
         for i in range(len(book)):
             b.write(f"{book[i]}, {title[i]}, {auth[i]}\n")
         print("The book title that you have requested has been successfully removed from the catalogue.")
