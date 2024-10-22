@@ -8,34 +8,34 @@ def overdue_checker(d : str) -> int:
 
 # Views the amount of loaned books that the member has
 def view_loaned_books(username : str):
-	users = []
-	book_ids = []
-	dates = []
+    price = 0
+    users = []
+    book_ids = []
+    dates = []
 
-	print("---------------\nLoaned Books\n---------------")
-	with open("database/bookrental_records.txt", "r") as bkr, open("database/books.txt", "r") as b:
-		bkr.seek(0)
-		lines = bkr.readlines()
-		for line in lines:
-			bkr_username, bkr_bookid, bkr_date = line.split(',')
-			users.append(bkr_username.strip())
-			book_ids.append(bkr_bookid.strip())
-			dates.append(bkr_date.strip())
 
-		for i in range(len(users)):
-			if username == users[i]:
-				x = overdue_checker(dates[i]) - 7
-				for line in b:
-					if book_ids[i] in line:
-						id, title, author = line.split(',')
-				if x > 0:
-					if x > 5:
-						price = 10
-					else:
-						price = 1
-						for t in range(x):
-							price =+ 1
-				print(f"{username} has borrowed {title.strip()} with ID of {id.strip()} by {author.strip()} and is overdued for {x} days.\n"
+    print("---------------\nLoaned Books\n---------------")
+    with open("database/bookrental_records.txt", "r") as bkr, open("database/books.txt", "r") as b:
+        bkr.seek(0)
+        lines = bkr.readlines()
+        for line in lines:
+            bkr_username, bkr_bookid, bkr_date = line.split(',')
+            users.append(bkr_username.strip())
+            book_ids.append(bkr_bookid.strip())
+            dates.append(bkr_date.strip())
+            
+        for i in range(len(users)):
+            if username == users[i]:
+                x = overdue_checker(dates[i])
+                for line in b:
+                    if book_ids[i] in line:
+                        id, title, author = line.split(',')
+                if x > 0:
+                    if x > 5:
+                        price = 10
+                    else:
+                        price = 1 + x
+                print(f"{username} has borrowed {title.strip()} with ID of {id.strip()} by {author.strip()} and is overdued for {x} days.\n"
 		   			f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
 
 # Function to allow the member to edit his personal

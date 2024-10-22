@@ -70,7 +70,7 @@ def loan():
         raise Exception(message)
     
     # Get the current date and format it as mm/dd/yyyy
-    d = date.today().strftime('%m/%d/%Y')
+    d = date.today().strftime('%m-%d-%Y')
     
     with open("database/bookrental_records.txt", "a") as bkr:
         bkr.write(f"{member_username},{book_input},{d}\n")
