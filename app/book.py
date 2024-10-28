@@ -58,9 +58,9 @@ def delbook():
         if book_id in book:
             x = book.index(book_id)
             
-            book.remove(x)
-            title.remove(x)
-            auth.remove(x)
+            book.pop(x)
+            title.pop(x)
+            auth.pop(x)
             b.seek(0)
             b.truncate(0)
             for i in range(len(book)):
