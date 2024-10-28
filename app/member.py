@@ -36,7 +36,7 @@ def view_loaned_books(username : str):
                     else:
                         price = 1 + x
                 print(f"{username} has borrowed {title.strip()} with ID of {id.strip()} by {author.strip()} for {x} days.")
-                if x > 0:
+                if price > 0:
                     print(f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
 
 # Function to allow the member to edit his personal
