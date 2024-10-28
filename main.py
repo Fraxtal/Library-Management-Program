@@ -11,7 +11,7 @@ if __name__ == '__main__':
 	
     if not os.path.exists("database/admins.txt"):
         with open("database/admins.txt", "x") as file:
-            file.write("root,123123123,admin,brickfieldskl@gmail.com")
+            file.write("root,123123123,admin,brickfieldskl@gmail.com\n")
     if not os.path.exists("database/bookrental_records.txt"):
         with open("database/bookrental_records.txt", "x") as file:
             pass
