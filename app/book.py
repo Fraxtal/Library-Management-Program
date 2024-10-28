@@ -58,14 +58,13 @@ def delbook():
         if book_id in book:
             x = book.index(book_id)
             
-            del book[x]
-            del title[x]
-            del auth[x]
+            book.remove(x)
+            title.remove(x)
+            auth.remove(x)
             b.seek(0)
             b.truncate(0)
             for i in range(len(book)):
-                if book[i] and title[i] and auth[x] is not None:
-                    b.write(f"{book[i]}, {title[i]}, {auth[i]}\n")
+                b.write(f"{book[i]}, {title[i]}, {auth[i]}\n")
             print("The book title that you have requested has been successfully removed from the catalogue.")
         else:
             raise Exception("Invalid BookID or BookID does not exist, please try again")

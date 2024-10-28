@@ -8,7 +8,6 @@ def overdue_checker(d : str) -> int:
 
 # Views the amount of loaned books that the member has
 def view_loaned_books(username : str):
-    price = 0
     users = []
     book_ids = []
     dates = []
@@ -26,6 +25,7 @@ def view_loaned_books(username : str):
             
         for i in range(len(users)):
             if username == users[i]:
+                price = 0
                 x = overdue_checker(dates[i])
                 for line in b:
                     if book_ids[i] in line:
