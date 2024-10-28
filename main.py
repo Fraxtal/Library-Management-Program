@@ -26,7 +26,7 @@ if __name__ == '__main__':
             pass
 
     #Print Startup Header for the Application
-    print("\t -----------------------------------------------\n"
+    print("\t ------------------------------------------------\n"
           "\t    Brickfields Kuala Lumpur Community Library \n"
           "\t ------------------------------------------------")
 
