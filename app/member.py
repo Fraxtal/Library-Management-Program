@@ -8,36 +8,44 @@ def overdue_checker(d : str) -> int:
 
 # Views the amount of loaned books that the member has
 def view_loaned_books(username : str):
-    users = []
-    book_ids = []
-    dates = []
-
+    bkr_users = []
+    bkr_b_ids = []
+    bkr_dates = []
+    b_id = []
+    b_title = []
+    b_author = []
 
     print("---------------\nLoaned Books\n---------------")
     with open("database/bookrental_records.txt", "r") as bkr, open("database/books.txt", "r") as b:
-        bkr.seek(0)
-        lines = bkr.readlines()
-        for line in lines:
-            bkr_username, bkr_bookid, bkr_date = line.split(',')
-            users.append(bkr_username.strip())
-            book_ids.append(bkr_bookid.strip())
-            dates.append(bkr_date.strip())
+        bkr_lines = bkr.readlines()
+        b_lines = b.readlines()
+        for line in bkr_lines:
+            username, bookid, date = line.split(',')
+            bkr_users.append(username.strip())
+            bkr_b_ids.append(bookid.strip())
+            bkr_dates.append(date.strip())
+        
+        for line in b_lines:
+            id, title, author = line.split(',')
+            b_id.append(id.strip())
+            b_title.append(title.strip())
+            b_author.append(author.strip())
+
             
-        for i in range(len(users)):
-            if username == users[i]:
+        for i in range(len(bkr_users)):
+            if username == bkr_users[i]:
                 price = 0
-                x = overdue_checker(dates[i])
-                for line in b:
-                    if book_ids[i] in line:
-                        id, title, author = line.split(',')
+                x = overdue_checker(bkr_dates[i])
                 if x > 0:
                     if x > 5:
                         price = 10
                     else:
                         price = 1 + x
-                print(f"{username} has borrowed {title.strip()} with ID of {id.strip()} by {author.strip()} for {x} days.")
-                if price > 0:
-                    print(f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
+                for index in range(len(b_id)):
+                    if bkr_b_ids[index] == b_id[i]:
+                        print(f"{username} has borrowed {b_title[index]} with ID of {b_id[index]} by {b_author[index]} for {x} days.")
+                        if price > 0:
+                            print(f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
 
 # Function to allow the member to edit his personal
 def editprofile(usrID : str):
