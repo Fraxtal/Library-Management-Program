@@ -42,7 +42,7 @@ def view_loaned_books(username : str):
                     else:
                         price = 1 + x
                 for index in range(len(b_id)):
-                    if bkr_b_ids[index] == b_id[i]:
+                    if b_id[index] == bkr_b_ids[i]:
                         print(f"{username} has borrowed {b_title[index]} with ID of {b_id[index]} by {b_author[index]} for {x} days.")
                         if price > 0:
                             print(f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
