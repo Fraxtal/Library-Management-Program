@@ -34,7 +34,7 @@ def addbook():
         elif title in b:
             raise Exception("Title already exists, please try again. ")
         else:
-            with open("database/books.txt", "a") as a:
+            with open("database/books.txt", "w") as a:
                 a.write(f"{book_id}, {title}, {author}\n")
                 print(f"Book titled {title} with id {book_id} by {author} has been successfully added into the catalogue!")
         

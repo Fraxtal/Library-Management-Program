@@ -72,6 +72,6 @@ def loan():
     # Get the current date and format it as mm/dd/yyyy
     d = date.today().strftime('%m-%d-%Y')
     
-    with open("database/bookrental_records.txt", "a") as bkr:
+    with open("database/bookrental_records.txt", "w") as bkr:
         bkr.write(f"{member_username},{book_input},{d}\n")
         print(f"Book {book_input} has been successfully loaned to {member_username}.")
