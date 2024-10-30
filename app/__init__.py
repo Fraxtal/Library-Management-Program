@@ -117,5 +117,8 @@ def main():
 						case _:
 							raise Exception("Invalid Input, Please Try Again")
 
+		except ValueError:
+			print("Error: Input should be in numeric value")
+
 		except Exception as e:
-	            print(f"Error: {e}")
+			print(f"Error: {e}")
