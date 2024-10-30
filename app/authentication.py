@@ -31,7 +31,7 @@ def register():
         pwd = input("Create your Password: ")
         cfm_pwd = input("Confirm your Password: ")
         
-        users = user.read()
+        users = user.readlines()
         for lines in users:
             u, n, e, p = lines.split(",")
             u_l.append(u.strip())
