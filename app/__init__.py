@@ -75,7 +75,7 @@ def main():
 							delusr(role(target))
 						case 6:
 							print("You have been logged out!")
-							break
+							main()
 						case _:
 							raise Exception("Invalid Input, Please Try Again")
 
@@ -97,7 +97,7 @@ def main():
 							loan()
 						case 7:
 							print("You have been logged out!")
-							break
+							main()
 						case _:
 							raise Exception("Invalid Input, Please Try Again")
 				
@@ -113,7 +113,7 @@ def main():
 							search_and_check_availability()
 						case 4:
 							print("You have been logged out!")
-							break
+							main()
 						case _:
 							raise Exception("Invalid Input, Please Try Again")
 
