@@ -24,7 +24,7 @@ def addbook():
                 auth.append(b_auth.strip())
 
         book_id = input("BookID: ")
-        title = input("Title: ")
+        t = input("Title: ")
         author = input("Author: ")
 
         if len(book_id) != 6:
@@ -34,9 +34,13 @@ def addbook():
         elif title in b:
             raise Exception("Title already exists, please try again. ")
         else:
+            book.append(book_id.strip())
+            title.append(t.strip())
+            auth.append(author.strip())
             with open("database/books.txt", "w") as a:
-                a.write(f"{book_id}, {title}, {author}\n")
-                print(f"Book titled {title} with id {book_id} by {author} has been successfully added into the catalogue!")
+                for i in range(len(book)):
+                    a.write(f"{book[i]}, {title[i]}, {auth[i]}\n")
+                print(f"Book titled {t} with id {book_id} by {author} has been successfully added into the catalogue!")
         
 
 # Deletes a book from the library catalogue

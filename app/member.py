@@ -20,8 +20,8 @@ def view_loaned_books(username : str):
         bkr_lines = bkr.readlines()
         b_lines = b.readlines()
         for line in bkr_lines:
-            username, bookid, date = line.split(',')
-            bkr_users.append(username.strip())
+            u, bookid, date = line.split(',')
+            bkr_users.append(u.strip())
             bkr_b_ids.append(bookid.strip())
             bkr_dates.append(date.strip())
         
@@ -31,21 +31,23 @@ def view_loaned_books(username : str):
             b_title.append(title.strip())
             b_author.append(author.strip())
 
-            
-        for i in range(len(bkr_users)):
-            if username == bkr_users[i]:
-                price = 0
-                x = overdue_checker(bkr_dates[i])
-                if x > 0:
-                    if x > 5:
-                        price = 10
-                    else:
-                        price = 1 + x
-                for index in range(len(b_id)):
-                    if b_id[index] == bkr_b_ids[i]:
-                        print(f"{username} has borrowed {b_title[index]} with ID of {b_id[index]} by {b_author[index]} for {x} days.")
-                        if price > 0:
-                            print(f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
+        if username in bkr_users:
+            for i in range(len(bkr_users)):
+                if username == bkr_users[i]:
+                    price = 0
+                    x = overdue_checker(bkr_dates[i])
+                    if x > 0:
+                        if x > 5:
+                            price = 10
+                        else:
+                            price = 1 + x
+                    for index in range(len(b_id)):
+                        if b_id[index] == bkr_b_ids[i]:
+                            print(f"{username} has borrowed {b_title[index]} with ID of {b_id[index]} by {b_author[index]} for {x} days.")
+                            if price > 0:
+                                print(f"Thus, you must pay a return fee of {float(price):.2f} upon returning the book.\n")
+        else:
+            print("User does not have any loaned books")
 
 # Function to allow the member to edit his personal
 def editprofile(usrID : str):

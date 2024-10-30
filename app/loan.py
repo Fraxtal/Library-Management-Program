@@ -72,6 +72,26 @@ def loan():
     # Get the current date and format it as mm/dd/yyyy
     d = date.today().strftime('%m-%d-%Y')
     
-    with open("database/bookrental_records.txt", "w") as bkr:
-        bkr.write(f"{member_username},{book_input},{d}\n")
+    users = []
+    books = []
+    dates = []
+    
+    with open("database/bookrental_records.txt", "r+") as bkr:
+        
+        bkr_lines = bkr.readlines()
+        for line in bkr_lines:
+            user, bk, d = line.split(",")
+            users.append(user.strip())
+            books.append(bk.strip())
+            dates.append(d.strip())
+        
+        users.append(member_username.strip())
+        books.append(book_input.strip())
+        dates.append(d.strip())
+    
+        bkr.seek(0)
+        bkr.truncate(0)
+    
+        for i in range(len(users)):
+            bkr.write(f"{users[i]},{books[i]},{dates[i]}\n")
         print(f"Book {book_input} has been successfully loaned to {member_username}.")
