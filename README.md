@@ -31,13 +31,21 @@ To get started with this project, follow the instructions below.
    python -m venv venv
 
 4. Activate the virtual environment:
-  On Windows:
+
+   On Windows:
    ```bash
    .\venv\Scripts\activate
-
-  On Mac:
+   ```
+   On Mac:
   ```bash
   source venv/bin/activate
-```
+   ```
+## Usage
 
-5.
+To run the project, follow these steps:
+
+If there are any specific environment variables, APIs, or configurations, set them up before running.
+
+Run the main Python script (or entry point):
+   ```bash
+   python main.py
