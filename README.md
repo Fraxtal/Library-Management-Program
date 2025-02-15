@@ -38,7 +38,7 @@ To get started with this project, follow the instructions below.
    ```
    On Mac:
   ```bash
-  source venv/bin/activate
+   source venv/bin/activate
    ```
 ## Usage
 
