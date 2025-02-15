@@ -44,8 +44,6 @@ To get started with this project, follow the instructions below.
 
 To run the project, follow these steps:
 
-If there are any specific environment variables, APIs, or configurations, set them up before running.
-
 Run the main Python script (or entry point):
    ```bash
    python main.py
