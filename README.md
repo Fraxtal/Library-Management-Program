@@ -47,3 +47,4 @@ To run the project, follow these steps:
 Run the main Python script (or entry point):
    ```bash
    python main.py
+```
