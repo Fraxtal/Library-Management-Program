@@ -2,6 +2,9 @@
 This is a simple Library Management Program utilizing only resources and modules solely from the Python Documentation only.
 Thus, there is no need for additional libraries such as pandas to utilize this program.
 
+<img width="574" height="124" alt="image" src="https://github.com/user-attachments/assets/ecbe3ec4-2b73-4942-8ec4-79e52516c70e" />
+
+
 This Program is a showcase example of our mastery in the Python Language.
 
 ## Overview
